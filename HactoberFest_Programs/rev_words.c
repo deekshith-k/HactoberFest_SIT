@@ -18,15 +18,15 @@ int main(){
 	while(str[i]!='\0'){
 		i++;
 		if(str[i]=='\0'){
-			reverse(str,begin,i-1);
+			reverse(str,begin,i+1);
 		}
 		else if(str[i]==' '){
-			reverse(str,begin,i-1);
+			reverse(str,begin,i+1);
 			begin=i+1;
 		}
 		
 	}
-	reverse(str,0,i-1);
+	reverse(str,begin,i-1);
 	puts(str);
 	return 0;
 }
