@@ -26,6 +26,5 @@ int main(){
 		
 	}
 	printf("\nTotal number of primes is :%d\n",count);
-
 	return 0;
 }
