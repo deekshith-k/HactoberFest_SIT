@@ -1,22 +1,74 @@
-#include<stdio.h>
-int main(){
-	char text[200],new_str[200];
-	int i=0,j=0,pos=0,num=0;
-	printf("\nEnter a string: ");
-	gets(text);
-	printf("\nEnter the position to delete: ");
-	scanf("%d",&pos);
-	printf("\nEnter the no. of characters to delete: ");
-	scanf("%d",&num);
-	while(text[i]!=NULL){
-		/*
-		Write the code to delete num no. of characters from position pos in string text.
-		*/
-		new_str[j++]=text[i++];
-		
-	}
-	new_str[j]=NULL;
-	printf("\nThe new string is: ");
-	puts(new_str);
-	return 0;
+#include <stdio.h>
+
+int search(char[], char[]);
+int delete_word(char[], char[], int);
+
+int main()
+{
+    char str[80], word[50];
+    int index;
+
+    printf("Enter string:\n");
+    gets(str);
+
+    printf("Enter word to delete:\n");
+    gets(word);
+
+    index = search(str, word);
+
+    if (index !=  - 1)
+    {
+        delete_word(str, word, index);
+        printf("String without word:\n%s", str);
+    }
+    else
+    {
+        printf("The word not present in the string.");
+    }
+
+    return 0;
+}
+
+/* Function returns the index of str where word is found */
+int search(char str[], char word[])
+{
+    int l, i, j;
+
+    /* finding length of word */
+    for (l = 0; word[l] != '\0'; l++);
+
+    for (i = 0, j = 0; str[i] != '\0' && word[j] != '\0'; i++)
+    {
+        if (str[i] == word[j])
+        {
+            j++;
+        }
+        else
+        {
+            j = 0;
+        }
+    }
+
+    if (j == l)
+    {
+        /* substring found */
+        return (i - j);
+    }
+    else
+    {
+        return  - 1;
+    }
+}
+
+int delete_word(char str[], char word[], int index)
+{
+    int i, l;
+    
+    /* finding length of word */
+    for (l = 0; word[l] != '\0'; l++);
+
+    for (i = index; str[i] != '\0'; i++)
+    {
+        str[i] = str[i + l + 1];
+    }
 }
