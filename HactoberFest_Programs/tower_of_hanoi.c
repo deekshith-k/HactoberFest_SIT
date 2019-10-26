@@ -1,20 +1,26 @@
-#include<stdio.h>
-
-void move(int n,char src,char dest,char spare){
-	if(n==1){
-		printf("\nMove disk from %c to %c.",src,dest);
-	}
-	else{
-		move(n-1,src,spare,dest);
-		move(1,src,dest,spare);
-		move(n-1,spare,dest,src);
-	}
-}
-
-int main(){
+#include <stdio.h>
+#include <conio.h>
+void hanoi(char,char,char,int);
+void main()
+{
 	int num;
-	printf("\nEnter the number of disks : ");
+	clrscr();
+	printf("\nENTER NUMBER OF DISKS: ");
 	scanf("%d",&num);
-	move(num,'A','C','B');
-	return 0;
+	printf("\nTOWER OF HANOI FOR %d NUMBER OF DISKS:\n", num);
+	hanoi('A','B','C',num);
+	getch();
+}
+void hanoi(char from,char to,char other,int n)
+{
+	if(n<=0)
+		printf("\nILLEGAL NUMBER OF DISKS");
+	if(n==1)
+		printf("\nMOVE DISK FROM %c TO %c",from,other);
+	if(n>1)
+	{
+		hanoi(from,other,to,n-1);
+		hanoi(from,to,other,1);
+		hanoi(to,from,other,n-1);
+	}
 }
