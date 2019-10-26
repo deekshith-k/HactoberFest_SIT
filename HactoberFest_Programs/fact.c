@@ -12,4 +12,4 @@ int main(){
 	int res=fact(num);
 	printf("\nFactorial of %d is : %d\n",num,res);
 	return 0;
-}
+} 
