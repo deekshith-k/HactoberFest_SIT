@@ -12,7 +12,7 @@ int main(){
 
         printf("%d",numArr[j]);
         if((j+1)%3!=0)
-            printf(",");
+          printf(",");
     }
     printf("\n");
    }
